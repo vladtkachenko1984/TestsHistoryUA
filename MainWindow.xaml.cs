@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -7,6 +7,30 @@ namespace QuizApp
 {
     public partial class MainWindow : Window
     {
+        private Dictionary<string, bool> correctAnswers = new Dictionary<string, bool>
+        {
+            {"Q1_Answer", true},
+            {"Q2_Answer", true},
+            {"Q3_Answer", true},
+            {"Q4_Answer", true},
+            {"Q5_Answer", true},
+            {"Q6_Answer", true},
+            {"Q7_Answer", true},
+            {"Q8_Answer", true},
+            {"Q9_Answer", true},
+            {"Q10_Answer", true},
+            {"Q11_Answer", true},
+            {"Q12_Answer", true},
+            {"Q13_Answer", true},
+            {"Q14_Answer", true},
+            {"Q15_Answer", true},
+            {"Q16_Answer", true},
+            {"Q17_Answer", true},
+            {"Q18_Answer", true},
+            {"Q19_Answer", true},
+            {"Q20_Answer", true}
+        };
+
         public MainWindow()
         {
             InitializeComponent();
@@ -14,36 +38,35 @@ namespace QuizApp
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            int correctAnswers = 0;
-            int totalQuestions = 20;
+            int correctCount = 0;
+            int totalQuestions = correctAnswers.Count;
+            List<string> correctList = new List<string>();
+            List<string> incorrectList = new List<string>();
 
-            // Перевірка відповідей
-            if (Q1_Answer.IsChecked == true) correctAnswers++;
-            if (Q2_Answer.IsChecked == true) correctAnswers++;
-            if (Q3_Answer.IsChecked == true) correctAnswers++;
-            if (Q4_Answer.IsChecked == true) correctAnswers++;
-            if (Q5_Answer.IsChecked == true) correctAnswers++;
-            if (Q6_Answer.IsChecked == true) correctAnswers++;
-            if (Q7_Answer.IsChecked == true) correctAnswers++;
-            if (Q8_Answer.IsChecked == true) correctAnswers++;
-            if (Q9_Answer.IsChecked == true) correctAnswers++;
-            if (Q10_Answer.IsChecked == true) correctAnswers++;
-            if (Q11_Answer.IsChecked == true) correctAnswers++;
-            if (Q12_Answer.IsChecked == true) correctAnswers++;
-            if (Q13_Answer.IsChecked == true) correctAnswers++;
-            if (Q14_Answer.IsChecked == true) correctAnswers++;
-            if (Q15_Answer.IsChecked == true) correctAnswers++;
-            if (Q16_Answer.IsChecked == true) correctAnswers++;
-            if (Q17_Answer.IsChecked == true) correctAnswers++;
-            if (Q18_Answer.IsChecked == true) correctAnswers++;
-            if (Q19_Answer.IsChecked == true) correctAnswers++;
-            if (Q20_Answer.IsChecked == true) correctAnswers++;
+            foreach (var entry in correctAnswers)
+            {
+                CheckBox checkBox = FindName(entry.Key) as CheckBox;
+                if (checkBox != null)
+                {
+                    if (checkBox.IsChecked == entry.Value)
+                    {
+                        correctCount++;
+                        correctList.Add(entry.Key);
+                    }
+                    else
+                    {
+                        incorrectList.Add(entry.Key);
+                    }
+                }
+            }
 
-            // Формуємо результат
-            string resultMessage = $"Правильних відповідей: {correctAnswers} з {totalQuestions}.";
+            string correctText = correctList.Count > 0 ? "\nПравильні: " + string.Join(", ", correctList) : "";
+            string incorrectText = incorrectList.Count > 0 ? "\nНеправильні: " + string.Join(", ", incorrectList) : "";
 
-            // Вивід результату у вікні повідомлення
+            string resultMessage = $"Правильних відповідей: {correctCount} з {totalQuestions}.{correctText}{incorrectText}";
+
             MessageBox.Show(resultMessage, "Результат тесту", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
+
