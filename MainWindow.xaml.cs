@@ -1,72 +1,140 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace QuizApp
 {
     public partial class MainWindow : Window
     {
-        private Dictionary<string, bool> correctAnswers = new Dictionary<string, bool>
-        {
-            {"Q1_Answer", true},
-            {"Q2_Answer", true},
-            {"Q3_Answer", true},
-            {"Q4_Answer", true},
-            {"Q5_Answer", true},
-            {"Q6_Answer", true},
-            {"Q7_Answer", true},
-            {"Q8_Answer", true},
-            {"Q9_Answer", true},
-            {"Q10_Answer", true},
-            {"Q11_Answer", true},
-            {"Q12_Answer", true},
-            {"Q13_Answer", true},
-            {"Q14_Answer", true},
-            {"Q15_Answer", true},
-            {"Q16_Answer", true},
-            {"Q17_Answer", true},
-            {"Q18_Answer", true},
-            {"Q19_Answer", true},
-            {"Q20_Answer", true}
-        };
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private void FinishTest(object sender, RoutedEventArgs e)
         {
-            int correctCount = 0;
-            int totalQuestions = correctAnswers.Count;
-            List<string> correctList = new List<string>();
-            List<string> incorrectList = new List<string>();
+            int correctAnswers = 0;
 
-            foreach (var entry in correctAnswers)
+            // Перевірка правильних відповідей для кожного питання
+            if (Q1_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q2_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q3_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q4_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q5_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q6_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q7_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q8_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q9_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q10_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q11_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q12_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q13_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q14_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q15_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q16_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q17_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q18_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q19_Answer.IsChecked == true)
+                correctAnswers++;
+            if (Q20_Answer.IsChecked == true)
+                correctAnswers++;
+
+            // Виведення результату
+            ResultText.Text = $"Правильних відповідей: {correctAnswers}/20";
+            ResultText.Visibility = Visibility.Visible;
+
+            // Підсвічування правильних і неправильних відповідей
+            HighlightAnswers();
+        }
+
+        private void HighlightAnswers()
+        {
+            // Підсвічування правильних відповідей
+            if (Q1_Answer.IsChecked == true) Q1_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q1_Answer);
+
+            if (Q2_Answer.IsChecked == true) Q2_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q2_Answer);
+
+            if (Q3_Answer.IsChecked == true) Q3_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q3_Answer);
+
+            if (Q4_Answer.IsChecked == true) Q4_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q4_Answer);
+
+            if (Q5_Answer.IsChecked == true) Q5_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q5_Answer);
+
+            if (Q6_Answer.IsChecked == true) Q6_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q6_Answer);
+
+            if (Q7_Answer.IsChecked == true) Q7_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q7_Answer);
+
+            if (Q8_Answer.IsChecked == true) Q8_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q8_Answer);
+
+            if (Q9_Answer.IsChecked == true) Q9_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q9_Answer);
+
+            if (Q10_Answer.IsChecked == true) Q10_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q10_Answer);
+
+            if (Q11_Answer.IsChecked == true) Q11_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q11_Answer);
+
+            if (Q12_Answer.IsChecked == true) Q12_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q12_Answer);
+
+            if (Q13_Answer.IsChecked == true) Q13_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q13_Answer);
+
+            if (Q14_Answer.IsChecked == true) Q14_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q14_Answer);
+
+            if (Q15_Answer.IsChecked == true) Q15_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q15_Answer);
+
+            if (Q16_Answer.IsChecked == true) Q16_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q16_Answer);
+
+            if (Q17_Answer.IsChecked == true) Q17_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q17_Answer);
+
+            if (Q18_Answer.IsChecked == true) Q18_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q18_Answer);
+
+            if (Q19_Answer.IsChecked == true) Q19_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q19_Answer);
+
+            if (Q20_Answer.IsChecked == true) Q20_Answer.Background = System.Windows.Media.Brushes.Green;
+            else HighlightIncorrectAnswer(Q20_Answer);
+        }
+
+        private void HighlightIncorrectAnswer(RadioButton answer)
+        {
+            // Підсвічування неправильних відповідей
+            if (answer.IsChecked == false)
             {
-                CheckBox checkBox = FindName(entry.Key) as CheckBox;
-                if (checkBox != null)
-                {
-                    if (checkBox.IsChecked == entry.Value)
-                    {
-                        correctCount++;
-                        correctList.Add(entry.Key);
-                    }
-                    else
-                    {
-                        incorrectList.Add(entry.Key);
-                    }
-                }
+                answer.Background = System.Windows.Media.Brushes.Red;
             }
-
-            string correctText = correctList.Count > 0 ? "\nПравильні: " + string.Join(", ", correctList) : "";
-            string incorrectText = incorrectList.Count > 0 ? "\nНеправильні: " + string.Join(", ", incorrectList) : "";
-
-            string resultMessage = $"Правильних відповідей: {correctCount} з {totalQuestions}.{correctText}{incorrectText}";
-
-            MessageBox.Show(resultMessage, "Результат тесту", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
-

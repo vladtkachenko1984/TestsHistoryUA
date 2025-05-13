@@ -4,6 +4,7 @@
         Title="TestsHistoryUA" Height="600" Width="500">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">
+
             <!-- Питання 1 -->
             <TextBlock Text="1. Назва якого найдавнішого народу на території України збереглась у писемних джерелах?" FontSize="14"/>
             <RadioButton Content="Сармати" GroupName="Q1"/>
@@ -21,8 +22,8 @@
             <!-- Питання 3 -->
             <TextBlock Text="3. Хто з наведених давньоруських князів найпершим прийняв християнство?" FontSize="14"/>
             <RadioButton Content="Кий" GroupName="Q3"/>
-            <RadioButton Content="Ольга" GroupName="Q3" x:Name="Q3_Answer"/>
-            <RadioButton Content="Аскольд" GroupName="Q3"/>
+            <RadioButton Content="Ольга" GroupName="Q3"/>
+            <RadioButton Content="Аскольд" GroupName="Q3" x:Name="Q3_Answer"/>
             <RadioButton Content="Володимир Великий" GroupName="Q3"/>
 
             <!-- Питання 4 -->
@@ -41,10 +42,10 @@
 
             <!-- Питання 6 -->
             <TextBlock Text="6. В яких роках відбулось повстання Богдана Хмельницького?" FontSize="14"/>
-            <RadioButton Content="1591-93 рр." GroupName="Q6"/>
-            <RadioButton Content="1594-96 рр." GroupName="Q6"/>
-            <RadioButton Content="1637-38 рр." GroupName="Q6"/>
-            <RadioButton Content="1648-54 рр." GroupName="Q6" x:Name="Q6_Answer"/>
+            <RadioButton Content="1591–93 рр." GroupName="Q6"/>
+            <RadioButton Content="1594–96 рр." GroupName="Q6"/>
+            <RadioButton Content="1637–38 рр." GroupName="Q6"/>
+            <RadioButton Content="1648–54 рр." GroupName="Q6" x:Name="Q6_Answer"/>
 
             <!-- Питання 7 -->
             <TextBlock Text="7. У якому році зруйновано Запорізьку Січ?" FontSize="14"/>
@@ -66,42 +67,49 @@
             <RadioButton Content="1862 р." GroupName="Q9"/>
             <RadioButton Content="1863 р." GroupName="Q9"/>
             <RadioButton Content="1864 р." GroupName="Q9"/>
+
             <!-- Питання 10 -->
             <TextBlock Text="10. Скільки було прийнято універсалів Центральної Ради?" FontSize="14"/>
-            <RadioButton Content="2" GroupName="Q10" x:Name="Q10_Answer"/>
+            <RadioButton Content="2" GroupName="Q10"/>
             <RadioButton Content="3" GroupName="Q10"/>
-            <RadioButton Content="4" GroupName="Q10"/>
+            <RadioButton Content="4" GroupName="Q10" x:Name="Q10_Answer"/>
             <RadioButton Content="5" GroupName="Q10"/>
+
             <!-- Питання 11 -->
             <TextBlock Text="11. У яких роках був Голодомор в Україні?" FontSize="14"/>
-            <RadioButton Content="1932-33 рр." GroupName="Q11" x:Name="Q11_Answer"/>
-            <RadioButton Content="1933-34 рр." GroupName="Q11"/>
-            <RadioButton Content="1934-35 рр." GroupName="Q11"/>
-            <RadioButton Content="1935-36 рр." GroupName="Q11"/>
+            <RadioButton Content="1932–33 рр." GroupName="Q11" x:Name="Q11_Answer"/>
+            <RadioButton Content="1933–34 рр." GroupName="Q11"/>
+            <RadioButton Content="1934–35 рр." GroupName="Q11"/>
+            <RadioButton Content="1935–36 рр." GroupName="Q11"/>
+
             <!-- Питання 12 -->
             <TextBlock Text="12. У яких роках була Радянсько-німецька війна?" FontSize="14"/>
-            <RadioButton Content="1940-44 рр." GroupName="Q12" x:Name="Q12_Answer"/>
-            <RadioButton Content="1941-45 рр." GroupName="Q12"/>
-            <RadioButton Content="1942-46 рр." GroupName="Q12"/>
-            <RadioButton Content="1943-47 рр." GroupName="Q12"/>
+            <RadioButton Content="1940–44 рр." GroupName="Q12"/>
+            <RadioButton Content="1941–45 рр." GroupName="Q12" x:Name="Q12_Answer"/>
+            <RadioButton Content="1942–46 рр." GroupName="Q12"/>
+            <RadioButton Content="1943–47 рр." GroupName="Q12"/>
+
             <!-- Питання 13 -->
             <TextBlock Text="13. Коли Крим був переданий від РРФСР до УРСР?" FontSize="14"/>
-            <RadioButton Content="1951 р." GroupName="Q13" x:Name="Q13_Answer"/>
+            <RadioButton Content="1951 р." GroupName="Q13"/>
             <RadioButton Content="1952 р." GroupName="Q13"/>
             <RadioButton Content="1953 р." GroupName="Q13"/>
-            <RadioButton Content="1954 р." GroupName="Q13"/>
+            <RadioButton Content="1954 р." GroupName="Q13" x:Name="Q13_Answer"/>
+
             <!-- Питання 14 -->
             <TextBlock Text="14. Хто був режисером фільму 'Тіні забутих предків'?" FontSize="14"/>
             <RadioButton Content="Сергій Параджанов" GroupName="Q14" x:Name="Q14_Answer"/>
             <RadioButton Content="Юрій Іллєнко" GroupName="Q14"/>
             <RadioButton Content="Федір Бондарчук" GroupName="Q14"/>
             <RadioButton Content="Кіра Муратова" GroupName="Q14"/>
+
             <!-- Питання 15 -->
             <TextBlock Text="15. Аварія на ЧАЕС мала місце у місті:" FontSize="14"/>
-            <RadioButton Content="Чорнобиль" GroupName="Q15" x:Name="Q15_Answer"/>
-            <RadioButton Content="Прип'ять" GroupName="Q15"/>
+            <RadioButton Content="Чорнобиль" GroupName="Q15"/>
+            <RadioButton Content="Прип'ять" GroupName="Q15" x:Name="Q15_Answer"/>
             <RadioButton Content="Іванків" GroupName="Q15"/>
             <RadioButton Content="Гнідин" GroupName="Q15"/>
+
             <!-- Питання 16 -->
             <TextBlock Text="16. Яка дата проголошення незалежності України?" FontSize="14"/>
             <RadioButton Content="06.07.1990 р." GroupName="Q16"/>
@@ -131,13 +139,15 @@
             <RadioButton Content="2017 р." GroupName="Q19"/>
 
             <!-- Питання 20 -->
-            <TextBlock Text="20. В якому році відбулось відкрите вторгнення росіян в    Україну?" FontSize="14"/>
+            <TextBlock Text="20. В якому році відбулось відкрите вторгнення росіян в Україну?" FontSize="14"/>
             <RadioButton Content="24.02.2022 р." GroupName="Q20" x:Name="Q20_Answer"/>
-            <RadioButton Content="08.03.2022 р." GroupName="Q20"/>
-            <RadioButton Content="26.04.2022 р." GroupName="Q20"/>
-            <RadioButton Content="03.05.2022 р." GroupName="Q20"/>
-            <Button Content="Завершити тест" Click="SubmitButton_Click" Margin="0,10,0,0"/>
+            <RadioButton Content="01.03.2022 р." GroupName="Q20"/>
+            <RadioButton Content="10.02.2022 р." GroupName="Q20"/>
+            <RadioButton Content="01.01.2022 р." GroupName="Q20"/>
+            <Button Content="Завершити тест" HorizontalAlignment="Center" Margin="10" Padding="10" VerticalAlignment="Bottom" Click="FinishTest"/>
+
+            <!-- Результати -->
+            <TextBlock x:Name="ResultText" FontSize="16" Margin="10" Visibility="Collapsed" HorizontalAlignment="Center"/>
         </StackPanel>
     </ScrollViewer>
 </Window>
-           
