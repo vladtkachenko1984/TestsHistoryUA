@@ -145,6 +145,12 @@
             <RadioButton Content="10.02.2022 р." GroupName="Q20"/>
             <RadioButton Content="01.01.2022 р." GroupName="Q20"/>
             <Button Content="Завершити тест" HorizontalAlignment="Center" Margin="10" Padding="10" VerticalAlignment="Bottom" Click="FinishTest"/>
+            <Button Content="Скинути тест" 
+        HorizontalAlignment="Center" 
+        Margin="10" 
+        Padding="10" 
+        VerticalAlignment="Bottom" 
+        Click="ResetTest"/>
 
             <!-- Результати -->
             <TextBlock x:Name="ResultText" FontSize="16" Margin="10" Visibility="Collapsed" HorizontalAlignment="Center"/>
