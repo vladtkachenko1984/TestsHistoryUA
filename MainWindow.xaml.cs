@@ -2,21 +2,52 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Collections.Generic;
+using System.Diagnostics; // для Stopwatch
+using System.Windows.Threading; // для DispatcherTimer
 
 namespace QuizApp
 {
     public partial class MainWindow : Window
     {
+        private Stopwatch stopwatch; // Для підрахунку часу
+        private DispatcherTimer timer; // Для оновлення UI
+        private readonly TimeSpan TimeLimit = TimeSpan.FromMinutes(1); // Обмеження часу на тест: 1 хвилина
+
         public MainWindow()
         {
             InitializeComponent();
+
+            // --- Ініціалізація Stopwatch та DispatcherTimer ---
+            stopwatch = new Stopwatch();
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1); // оновлюємо раз на секунду
+            timer.Tick += Timer_Tick;
+
+            stopwatch.Start();
+            timer.Start();
+        }
+
+        // --- Оновлення тексту таймера ---
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            // Оновлюємо відлік часу
+            TimerText.Text = $"Час: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
+
+            // Якщо час вичерпано — автоматично завершити тест
+            if (stopwatch.Elapsed >= TimeLimit)
+            {
+                FinishTest(this, new RoutedEventArgs());
+            }
         }
 
         private void FinishTest(object sender, RoutedEventArgs e)
         {
+            stopwatch.Stop(); // зупиняємо час
+            timer.Stop();
+
             int correctAnswers = 0;
 
-            // Перевірка правильних відповідей для кожного питання
+            // Перевірка правильних відповідей
             if (Q1_Answer.IsChecked == true) correctAnswers++;
             if (Q2_Answer.IsChecked == true) correctAnswers++;
             if (Q3_Answer.IsChecked == true) correctAnswers++;
@@ -38,8 +69,8 @@ namespace QuizApp
             if (Q19_Answer.IsChecked == true) correctAnswers++;
             if (Q20_Answer.IsChecked == true) correctAnswers++;
 
-            // Виведення результату
-            ResultText.Text = $"Правильних відповідей: {correctAnswers}/20";
+            // Виведення результату разом із часом
+            ResultText.Text = $"Правильних відповідей: {correctAnswers}/20\nЧас проходження: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
             ResultText.Visibility = Visibility.Visible;
 
             // Підсвічування правильних і неправильних відповідей
@@ -117,20 +148,26 @@ namespace QuizApp
             }
         }
 
-        // --- Додаємо метод для кнопки "Скинути тест" ---
+        // --- Кнопка "Скинути тест" ---
         private void ResetTest(object sender, RoutedEventArgs e)
         {
             foreach (var rb in FindVisualChildren<RadioButton>(this))
             {
                 rb.IsChecked = false;
-                rb.Background = Brushes.Transparent; // повернення стандартного фону
+                rb.Background = Brushes.Transparent;
             }
 
             ResultText.Text = "";
             ResultText.Visibility = Visibility.Collapsed;
+
+            // --- Скидаємо таймер ---
+            stopwatch.Reset();
+            TimerText.Text = "Час: 00:00";
+            stopwatch.Start();
+            timer.Start();
         }
 
-        // Метод для пошуку всіх RadioButton у вікні
+        // Метод для пошуку всіх RadioButton
         private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)
