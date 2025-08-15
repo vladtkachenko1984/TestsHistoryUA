@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics; // для Stopwatch
 using System.Windows.Threading; // для DispatcherTimer
 using System;
+using System.IO; // для збереження у файл
 
 namespace QuizApp
 {
@@ -87,6 +88,11 @@ namespace QuizApp
             ResultText.Visibility = Visibility.Visible;
 
             HighlightAnswers();
+
+            // --- Збереження результатів у файл ---
+            string filePath = "history.txt";
+            string record = $"{DateTime.Now:dd.MM.yyyy HH:mm} — {correctAnswers}/{totalQuestions} ({percent:F0}%), Час: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
+            File.AppendAllText(filePath, record + Environment.NewLine);
         }
 
         private void HighlightAnswers()
@@ -188,4 +194,4 @@ namespace QuizApp
             }
         }
     }
-} 
+}
