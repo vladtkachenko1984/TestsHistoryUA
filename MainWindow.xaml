@@ -27,7 +27,7 @@
             <RadioButton Content="Кіммерійці" GroupName="Q1" x:Name="Q1_Answer"/>
             <RadioButton Content="Скіфи" GroupName="Q1"/>
             <TextBlock x:Name="Q1_Explanation" Text="Про кіммерійців згадується у творчості давньогрецького поета 8 ст до н.е. Гомера" 
-           FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 2 -->
             <TextBlock Text="2. На території якого сучасного міста України знаходилась давньогрецька колонія Херсонес?" FontSize="14"/>
@@ -36,7 +36,7 @@
             <RadioButton Content="Севастополь" GroupName="Q2" x:Name="Q2_Answer"/>
             <RadioButton Content="Керч" GroupName="Q2"/>
             <TextBlock x:Name="Q2_Explanation" Text="Руїни Херсонеса знайдені на території Севастополя" 
-           FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 3 -->
             <TextBlock Text="3. Хто з наведених давньоруських князів найпершим прийняв християнство?" FontSize="14"/>
@@ -45,7 +45,7 @@
             <RadioButton Content="Аскольд" GroupName="Q3" x:Name="Q3_Answer"/>
             <RadioButton Content="Володимир Великий" GroupName="Q3"/>
             <TextBlock x:Name="Q3_Explanation" Text="Аскольд прийняв християнство після походу на Візантію" 
-           FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 4 -->
             <TextBlock Text="4. У якому році відбулось хрещення Русі?" FontSize="14"/>
@@ -54,7 +54,7 @@
             <RadioButton Content="1015 р." GroupName="Q4"/>
             <RadioButton Content="1113 р." GroupName="Q4"/>
             <TextBlock x:Name="Q4_Explanation" Text="Дата умовна, але загальноприйнята істориками" 
-            FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 5 -->
             <TextBlock Text="5. В якому році татаро-монголи захопили Київ?" FontSize="14"/>
@@ -63,7 +63,7 @@
             <RadioButton Content="1240 р." GroupName="Q5" x:Name="Q5_Answer"/>
             <RadioButton Content="1242 р." GroupName="Q5"/>
             <TextBlock x:Name="Q5_Explanation" Text="Дата зафіксована у писемних джерелах" 
-            FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 6 -->
             <TextBlock Text="6. В яких роках відбулось повстання Богдана Хмельницького?" FontSize="14"/>
@@ -72,7 +72,7 @@
             <RadioButton Content="1637–38 рр." GroupName="Q6"/>
             <RadioButton Content="1648–54 рр." GroupName="Q6" x:Name="Q6_Answer"/>
             <TextBlock x:Name="Q6_Explanation" Text="Дата зафіксована у писемних джерелах" 
-            FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 7 -->
             <TextBlock Text="7. У якому році зруйновано Запорізьку Січ?" FontSize="14"/>
@@ -81,7 +81,7 @@
             <RadioButton Content="1781 р." GroupName="Q7"/>
             <RadioButton Content="1783 р." GroupName="Q7"/>
             <TextBlock x:Name="Q7_Explanation" Text="Дата зафіксована у писемних джерелах" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 8 -->
             <TextBlock Text="8. Хто був автором поеми 'Енеїда'?" FontSize="14"/>
@@ -90,7 +90,7 @@
             <RadioButton Content="Левко Дурко" GroupName="Q8"/>
             <RadioButton Content="Ілля Кива" GroupName="Q8"/>
             <TextBlock x:Name="Q8_Explanation" Text="Котляревський загалом писав Енеїду як розважальний твір" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 9 -->
             <TextBlock Text="9. У якому році в царській Росії скасували кріпацтво?" FontSize="14"/>
@@ -99,7 +99,7 @@
             <RadioButton Content="1863 р." GroupName="Q9"/>
             <RadioButton Content="1864 р." GroupName="Q9"/>
             <TextBlock x:Name="Q9_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема в юридичних актах" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 10 -->
             <TextBlock Text="10. Скільки було прийнято універсалів Центральної Ради?" FontSize="14"/>
@@ -108,7 +108,7 @@
             <RadioButton Content="4" GroupName="Q10" x:Name="Q10_Answer"/>
             <RadioButton Content="5" GroupName="Q10"/>
             <TextBlock x:Name="Q10_Explanation" Text="Дата зафіксована у писемних джерелах" 
-            FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 11 -->
             <TextBlock Text="11. У яких роках був Голодомор в Україні?" FontSize="14"/>
@@ -117,7 +117,7 @@
             <RadioButton Content="1934–35 рр." GroupName="Q11"/>
             <RadioButton Content="1935–36 рр." GroupName="Q11"/>
             <TextBlock x:Name="Q11_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 12 -->
             <TextBlock Text="12. У яких роках була Радянсько-німецька війна?" FontSize="14"/>
@@ -126,7 +126,7 @@
             <RadioButton Content="1942–46 рр." GroupName="Q12"/>
             <RadioButton Content="1943–47 рр." GroupName="Q12"/>
             <TextBlock x:Name="Q12_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях учасників війни" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 13 -->
             <TextBlock Text="13. Коли Крим був переданий від РРФСР до УРСР?" FontSize="14"/>
@@ -135,8 +135,7 @@
             <RadioButton Content="1953 р." GroupName="Q13"/>
             <RadioButton Content="1954 р." GroupName="Q13" x:Name="Q13_Answer"/>
             <TextBlock x:Name="Q13_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у юридичних актах" 
-            FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
-
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
             <!-- Питання 14 -->
             <TextBlock Text="14. Хто був режисером фільму 'Тіні забутих предків'?" FontSize="14"/>
             <RadioButton Content="Сергій Параджанов" GroupName="Q14" x:Name="Q14_Answer"/>
@@ -144,7 +143,7 @@
             <RadioButton Content="Федір Бондарчук" GroupName="Q14"/>
             <RadioButton Content="Кіра Муратова" GroupName="Q14"/>
             <TextBlock x:Name="Q14_Explanation" Text="Неймовірно, але етнічний вірменин дуже захопився українською культурою" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 15 -->
             <TextBlock Text="15. Аварія на ЧАЕС мала місце у місті:" FontSize="14"/>
@@ -153,7 +152,7 @@
             <RadioButton Content="Іванків" GroupName="Q15"/>
             <RadioButton Content="Гнідин" GroupName="Q15"/>
             <TextBlock x:Name="Q15_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 16 -->
             <TextBlock Text="16. Яка дата проголошення незалежності України?" FontSize="14"/>
@@ -162,7 +161,7 @@
             <RadioButton Content="01.12.1991 р." GroupName="Q16"/>
             <RadioButton Content="25.12.1991 р." GroupName="Q16"/>
             <TextBlock x:Name="Q16_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 17 -->
             <TextBlock Text="17. Яка назва гімну України?" FontSize="14"/>
@@ -171,7 +170,7 @@
             <RadioButton Content="Повій вітре на Вкраїну" GroupName="Q17"/>
             <RadioButton Content="Їхали козаки" GroupName="Q17"/>
             <TextBlock x:Name="Q17_Explanation" Text="Офіційний варіант назви: Ще не вмерла Україна" 
-            FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 18 -->
             <TextBlock Text="18. Яка назва сучасної української валюти?" FontSize="14"/>
@@ -180,7 +179,7 @@
             <RadioButton Content="Фунт" GroupName="Q18"/>
             <RadioButton Content="Долар" GroupName="Q18"/>
             <TextBlock x:Name="Q18_Explanation" Text="Назва валюти затверджена рішенням парламенту" 
-            FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 19 -->
             <TextBlock Text="19. В якому році росіяни окупували Крим?" FontSize="14"/>
@@ -189,7 +188,7 @@
             <RadioButton Content="2016 р." GroupName="Q19"/>
             <RadioButton Content="2017 р." GroupName="Q19"/>
             <TextBlock x:Name="Q19_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
 
             <!-- Питання 20 -->
             <TextBlock Text="20. В якому році відбулось відкрите вторгнення росіян в Україну?" FontSize="14"/>
@@ -198,14 +197,11 @@
             <RadioButton Content="10.02.2022 р." GroupName="Q20"/>
             <RadioButton Content="01.01.2022 р." GroupName="Q20"/>
             <TextBlock x:Name="Q20_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-             FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+
+            <!-- Кнопки завершення та скидання -->
             <Button Content="Завершити тест" HorizontalAlignment="Center" Margin="10" Padding="10" VerticalAlignment="Bottom" Click="FinishTest"/>
-            <Button Content="Скинути тест" 
-        HorizontalAlignment="Center" 
-        Margin="10" 
-        Padding="10" 
-        VerticalAlignment="Bottom" 
-        Click="ResetTest"/>
+            <Button Content="Скинути тест" HorizontalAlignment="Center" Margin="10" Padding="10" VerticalAlignment="Bottom" Click="ResetTest"/>
 
             <!-- Результати -->
             <TextBlock x:Name="ResultText" FontSize="16" Margin="10" Visibility="Collapsed" HorizontalAlignment="Center"/>

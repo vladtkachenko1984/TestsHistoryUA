@@ -15,6 +15,8 @@ namespace QuizApp
         private DispatcherTimer timer;
         private readonly TimeSpan TimeLimit = TimeSpan.FromMinutes(1);
         private readonly int totalQuestions = 20;
+        private readonly Dictionary<int, RadioButton> correctAnswers = new Dictionary<int, RadioButton>();
+        private readonly Dictionary<int, TextBlock> explanations = new Dictionary<int, TextBlock>();
 
         public MainWindow()
         {
@@ -33,6 +35,49 @@ namespace QuizApp
                 rb.Checked += AnswerSelected;
             }
 
+            // Заповнюємо словники правильних відповідей та пояснень
+            correctAnswers[1] = Q1_Answer;
+            correctAnswers[2] = Q2_Answer;
+            correctAnswers[3] = Q3_Answer;
+            correctAnswers[4] = Q4_Answer;
+            correctAnswers[5] = Q5_Answer;
+            correctAnswers[6] = Q6_Answer;
+            correctAnswers[7] = Q7_Answer;
+            correctAnswers[8] = Q8_Answer;
+            correctAnswers[9] = Q9_Answer;
+            correctAnswers[10] = Q10_Answer;
+            correctAnswers[11] = Q11_Answer;
+            correctAnswers[12] = Q12_Answer;
+            correctAnswers[13] = Q13_Answer;
+            correctAnswers[14] = Q14_Answer;
+            correctAnswers[15] = Q15_Answer;
+            correctAnswers[16] = Q16_Answer;
+            correctAnswers[17] = Q17_Answer;
+            correctAnswers[18] = Q18_Answer;
+            correctAnswers[19] = Q19_Answer;
+            correctAnswers[20] = Q20_Answer;
+
+            explanations[1] = Q1_Explanation;
+            explanations[2] = Q2_Explanation;
+            explanations[3] = Q3_Explanation;
+            explanations[4] = Q4_Explanation;
+            explanations[5] = Q5_Explanation;
+            explanations[6] = Q6_Explanation;
+            explanations[7] = Q7_Explanation;
+            explanations[8] = Q8_Explanation;
+            explanations[9] = Q9_Explanation;
+            explanations[10] = Q10_Explanation;
+            explanations[11] = Q11_Explanation;
+            explanations[12] = Q12_Explanation;
+            explanations[13] = Q13_Explanation;
+            explanations[14] = Q14_Explanation;
+            explanations[15] = Q15_Explanation;
+            explanations[16] = Q16_Explanation;
+            explanations[17] = Q17_Explanation;
+            explanations[18] = Q18_Explanation;
+            explanations[19] = Q19_Explanation;
+            explanations[20] = Q20_Explanation;
+
             HideAllExplanations();
         }
 
@@ -40,9 +85,7 @@ namespace QuizApp
         {
             TimerText.Text = $"Час: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
             if (stopwatch.Elapsed >= TimeLimit)
-            {
                 FinishTest(this, new RoutedEventArgs());
-            }
         }
 
         private void FinishTest(object? sender, RoutedEventArgs e)
@@ -50,76 +93,52 @@ namespace QuizApp
             stopwatch.Stop();
             timer.Stop();
 
-            int correctAnswers = 0;
+            int correctCount = 0;
+            foreach (var kvp in correctAnswers)
+            {
+                if (kvp.Value.IsChecked == true)
+                    correctCount++;
+            }
 
-            if (Q1_Answer.IsChecked == true) correctAnswers++;
-            if (Q2_Answer.IsChecked == true) correctAnswers++;
-            if (Q3_Answer.IsChecked == true) correctAnswers++;
-            if (Q4_Answer.IsChecked == true) correctAnswers++;
-            if (Q5_Answer.IsChecked == true) correctAnswers++;
-            if (Q6_Answer.IsChecked == true) correctAnswers++;
-            if (Q7_Answer.IsChecked == true) correctAnswers++;
-            if (Q8_Answer.IsChecked == true) correctAnswers++;
-            if (Q9_Answer.IsChecked == true) correctAnswers++;
-            if (Q10_Answer.IsChecked == true) correctAnswers++;
-            if (Q11_Answer.IsChecked == true) correctAnswers++;
-            if (Q12_Answer.IsChecked == true) correctAnswers++;
-            if (Q13_Answer.IsChecked == true) correctAnswers++;
-            if (Q14_Answer.IsChecked == true) correctAnswers++;
-            if (Q15_Answer.IsChecked == true) correctAnswers++;
-            if (Q16_Answer.IsChecked == true) correctAnswers++;
-            if (Q17_Answer.IsChecked == true) correctAnswers++;
-            if (Q18_Answer.IsChecked == true) correctAnswers++;
-            if (Q19_Answer.IsChecked == true) correctAnswers++;
-            if (Q20_Answer.IsChecked == true) correctAnswers++;
+            double percent = (double)correctCount / totalQuestions * 100;
 
-            double percent = (double)correctAnswers / totalQuestions * 100;
+            TestProgressBar.Value = correctCount;
+            ProgressText.Text = $"{correctCount} / {totalQuestions} питань ({percent:F0}%)";
 
-            TestProgressBar.Value = correctAnswers;
-            ProgressText.Text = $"{correctAnswers} / {totalQuestions} питань ({percent:F0}%)";
-
-            ResultText.Text = $"Правильних відповідей: {correctAnswers}/{totalQuestions} ({percent:F0}%)\n" +
+            ResultText.Text = $"Правильних відповідей: {correctCount}/{totalQuestions} ({percent:F0}%)\n" +
                               $"Час проходження: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
             ResultText.Visibility = Visibility.Visible;
 
             HighlightAnswers();
-            ShowExplanationsForCorrect(); // лише правильні відповіді
+            ShowExplanationsForCorrect();
 
             string filePath = "history.txt";
-            string record = $"{DateTime.Now:dd.MM.yyyy HH:mm} — {correctAnswers}/{totalQuestions} ({percent:F0}%), Час: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
+            string record = $"{DateTime.Now:dd.MM.yyyy HH:mm} — {correctCount}/{totalQuestions} ({percent:F0}%), Час: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
             File.AppendAllText(filePath, record + Environment.NewLine);
         }
 
         private void HighlightAnswers()
         {
-            HighlightAnswer(Q1_Answer);
-            HighlightAnswer(Q2_Answer);
-            HighlightAnswer(Q3_Answer);
-            HighlightAnswer(Q4_Answer);
-            HighlightAnswer(Q5_Answer);
-            HighlightAnswer(Q6_Answer);
-            HighlightAnswer(Q7_Answer);
-            HighlightAnswer(Q8_Answer);
-            HighlightAnswer(Q9_Answer);
-            HighlightAnswer(Q10_Answer);
-            HighlightAnswer(Q11_Answer);
-            HighlightAnswer(Q12_Answer);
-            HighlightAnswer(Q13_Answer);
-            HighlightAnswer(Q14_Answer);
-            HighlightAnswer(Q15_Answer);
-            HighlightAnswer(Q16_Answer);
-            HighlightAnswer(Q17_Answer);
-            HighlightAnswer(Q18_Answer);
-            HighlightAnswer(Q19_Answer);
-            HighlightAnswer(Q20_Answer);
+            foreach (var kvp in correctAnswers)
+            {
+                var answer = kvp.Value;
+                answer.Background = answer.IsChecked == true ? Brushes.Green : Brushes.Red;
+            }
         }
 
-        private void HighlightAnswer(RadioButton answer)
+        private void ShowExplanationsForCorrect()
         {
-            if (answer.IsChecked == true)
-                answer.Background = Brushes.Green;
-            else
-                answer.Background = Brushes.Red;
+            foreach (var kvp in correctAnswers)
+            {
+                if (kvp.Value.IsChecked == true)
+                    explanations[kvp.Key].Visibility = Visibility.Visible;
+            }
+        }
+
+        private void HideAllExplanations()
+        {
+            foreach (var exp in explanations.Values)
+                exp.Visibility = Visibility.Collapsed;
         }
 
         private void AnswerSelected(object? sender, RoutedEventArgs e)
@@ -168,54 +187,6 @@ namespace QuizApp
             timer.Start();
 
             HideAllExplanations();
-        }
-
-        private void ShowExplanationsForCorrect()
-        {
-            if (Q1_Answer.IsChecked == true) Q1_Explanation.Visibility = Visibility.Visible;
-            if (Q2_Answer.IsChecked == true) Q2_Explanation.Visibility = Visibility.Visible;
-            if (Q3_Answer.IsChecked == true) Q3_Explanation.Visibility = Visibility.Visible;
-            if (Q4_Answer.IsChecked == true) Q4_Explanation.Visibility = Visibility.Visible;
-            if (Q5_Answer.IsChecked == true) Q5_Explanation.Visibility = Visibility.Visible;
-            if (Q6_Answer.IsChecked == true) Q6_Explanation.Visibility = Visibility.Visible;
-            if (Q7_Answer.IsChecked == true) Q7_Explanation.Visibility = Visibility.Visible;
-            if (Q8_Answer.IsChecked == true) Q8_Explanation.Visibility = Visibility.Visible;
-            if (Q9_Answer.IsChecked == true) Q9_Explanation.Visibility = Visibility.Visible;
-            if (Q10_Answer.IsChecked == true) Q10_Explanation.Visibility = Visibility.Visible;
-            if (Q11_Answer.IsChecked == true) Q11_Explanation.Visibility = Visibility.Visible;
-            if (Q12_Answer.IsChecked == true) Q12_Explanation.Visibility = Visibility.Visible;
-            if (Q13_Answer.IsChecked == true) Q13_Explanation.Visibility = Visibility.Visible;
-            if (Q14_Answer.IsChecked == true) Q14_Explanation.Visibility = Visibility.Visible;
-            if (Q15_Answer.IsChecked == true) Q15_Explanation.Visibility = Visibility.Visible;
-            if (Q16_Answer.IsChecked == true) Q16_Explanation.Visibility = Visibility.Visible;
-            if (Q17_Answer.IsChecked == true) Q17_Explanation.Visibility = Visibility.Visible;
-            if (Q18_Answer.IsChecked == true) Q18_Explanation.Visibility = Visibility.Visible;
-            if (Q19_Answer.IsChecked == true) Q19_Explanation.Visibility = Visibility.Visible;
-            if (Q20_Answer.IsChecked == true) Q20_Explanation.Visibility = Visibility.Visible;
-        }
-
-        private void HideAllExplanations()
-        {
-            Q1_Explanation.Visibility = Visibility.Collapsed;
-            Q2_Explanation.Visibility = Visibility.Collapsed;
-            Q3_Explanation.Visibility = Visibility.Collapsed;
-            Q4_Explanation.Visibility = Visibility.Collapsed;
-            Q5_Explanation.Visibility = Visibility.Collapsed;
-            Q6_Explanation.Visibility = Visibility.Collapsed;
-            Q7_Explanation.Visibility = Visibility.Collapsed;
-            Q8_Explanation.Visibility = Visibility.Collapsed;
-            Q9_Explanation.Visibility = Visibility.Collapsed;
-            Q10_Explanation.Visibility = Visibility.Collapsed;
-            Q11_Explanation.Visibility = Visibility.Collapsed;
-            Q12_Explanation.Visibility = Visibility.Collapsed;
-            Q13_Explanation.Visibility = Visibility.Collapsed;
-            Q14_Explanation.Visibility = Visibility.Collapsed;
-            Q15_Explanation.Visibility = Visibility.Collapsed;
-            Q16_Explanation.Visibility = Visibility.Collapsed;
-            Q17_Explanation.Visibility = Visibility.Collapsed;
-            Q18_Explanation.Visibility = Visibility.Collapsed;
-            Q19_Explanation.Visibility = Visibility.Collapsed;
-            Q20_Explanation.Visibility = Visibility.Collapsed;
         }
 
         private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
