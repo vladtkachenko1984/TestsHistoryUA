@@ -2,52 +2,50 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Collections.Generic;
-using System.Diagnostics; // для Stopwatch
-using System.Windows.Threading; // для DispatcherTimer
+using System.Diagnostics;
+using System.Windows.Threading;
 using System;
-using System.IO; // для збереження у файл
+using System.IO;
 
 namespace QuizApp
 {
     public partial class MainWindow : Window
     {
-        private Stopwatch stopwatch; // Для підрахунку часу
-        private DispatcherTimer timer; // Для оновлення UI
-        private readonly TimeSpan TimeLimit = TimeSpan.FromMinutes(1); // Обмеження часу на тест: 1 хвилина
-        private readonly int totalQuestions = 20; // для прогрес-бару
+        private Stopwatch stopwatch;
+        private DispatcherTimer timer;
+        private readonly TimeSpan TimeLimit = TimeSpan.FromMinutes(1);
+        private readonly int totalQuestions = 20;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            // --- Ініціалізація Stopwatch та DispatcherTimer ---
             stopwatch = new Stopwatch();
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1); // оновлюємо раз на секунду
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
 
             stopwatch.Start();
             timer.Start();
 
-            // Підписуємо всі RadioButton на подію вибору
             foreach (var rb in FindVisualChildren<RadioButton>(this))
             {
                 rb.Checked += AnswerSelected;
             }
+
+            HideAllExplanations();
         }
 
-        // --- Оновлення тексту таймера ---
         private void Timer_Tick(object? sender, EventArgs e)
         {
             TimerText.Text = $"Час: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
-
             if (stopwatch.Elapsed >= TimeLimit)
             {
                 FinishTest(this, new RoutedEventArgs());
             }
         }
 
-        private void FinishTest(object sender, RoutedEventArgs e)
+        private void FinishTest(object? sender, RoutedEventArgs e)
         {
             stopwatch.Stop();
             timer.Stop();
@@ -75,21 +73,18 @@ namespace QuizApp
             if (Q19_Answer.IsChecked == true) correctAnswers++;
             if (Q20_Answer.IsChecked == true) correctAnswers++;
 
-            // Обчислення відсотків
             double percent = (double)correctAnswers / totalQuestions * 100;
 
-            // Оновлення прогрес-бара та тексту
             TestProgressBar.Value = correctAnswers;
             ProgressText.Text = $"{correctAnswers} / {totalQuestions} питань ({percent:F0}%)";
 
-            // Відображення результатів
             ResultText.Text = $"Правильних відповідей: {correctAnswers}/{totalQuestions} ({percent:F0}%)\n" +
                               $"Час проходження: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
             ResultText.Visibility = Visibility.Visible;
 
             HighlightAnswers();
+            ShowExplanationsForCorrect(); // лише правильні відповіді
 
-            // --- Збереження результатів у файл ---
             string filePath = "history.txt";
             string record = $"{DateTime.Now:dd.MM.yyyy HH:mm} — {correctAnswers}/{totalQuestions} ({percent:F0}%), Час: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
             File.AppendAllText(filePath, record + Environment.NewLine);
@@ -97,38 +92,37 @@ namespace QuizApp
 
         private void HighlightAnswers()
         {
-            if (Q1_Answer.IsChecked == true) Q1_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q1_Answer);
-            if (Q2_Answer.IsChecked == true) Q2_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q2_Answer);
-            if (Q3_Answer.IsChecked == true) Q3_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q3_Answer);
-            if (Q4_Answer.IsChecked == true) Q4_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q4_Answer);
-            if (Q5_Answer.IsChecked == true) Q5_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q5_Answer);
-            if (Q6_Answer.IsChecked == true) Q6_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q6_Answer);
-            if (Q7_Answer.IsChecked == true) Q7_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q7_Answer);
-            if (Q8_Answer.IsChecked == true) Q8_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q8_Answer);
-            if (Q9_Answer.IsChecked == true) Q9_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q9_Answer);
-            if (Q10_Answer.IsChecked == true) Q10_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q10_Answer);
-            if (Q11_Answer.IsChecked == true) Q11_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q11_Answer);
-            if (Q12_Answer.IsChecked == true) Q12_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q12_Answer);
-            if (Q13_Answer.IsChecked == true) Q13_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q13_Answer);
-            if (Q14_Answer.IsChecked == true) Q14_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q14_Answer);
-            if (Q15_Answer.IsChecked == true) Q15_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q15_Answer);
-            if (Q16_Answer.IsChecked == true) Q16_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q16_Answer);
-            if (Q17_Answer.IsChecked == true) Q17_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q17_Answer);
-            if (Q18_Answer.IsChecked == true) Q18_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q18_Answer);
-            if (Q19_Answer.IsChecked == true) Q19_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q19_Answer);
-            if (Q20_Answer.IsChecked == true) Q20_Answer.Background = Brushes.Green; else HighlightIncorrectAnswer(Q20_Answer);
+            HighlightAnswer(Q1_Answer);
+            HighlightAnswer(Q2_Answer);
+            HighlightAnswer(Q3_Answer);
+            HighlightAnswer(Q4_Answer);
+            HighlightAnswer(Q5_Answer);
+            HighlightAnswer(Q6_Answer);
+            HighlightAnswer(Q7_Answer);
+            HighlightAnswer(Q8_Answer);
+            HighlightAnswer(Q9_Answer);
+            HighlightAnswer(Q10_Answer);
+            HighlightAnswer(Q11_Answer);
+            HighlightAnswer(Q12_Answer);
+            HighlightAnswer(Q13_Answer);
+            HighlightAnswer(Q14_Answer);
+            HighlightAnswer(Q15_Answer);
+            HighlightAnswer(Q16_Answer);
+            HighlightAnswer(Q17_Answer);
+            HighlightAnswer(Q18_Answer);
+            HighlightAnswer(Q19_Answer);
+            HighlightAnswer(Q20_Answer);
         }
 
-        private void HighlightIncorrectAnswer(RadioButton answer)
+        private void HighlightAnswer(RadioButton answer)
         {
-            if (answer.IsChecked == false)
-            {
+            if (answer.IsChecked == true)
+                answer.Background = Brushes.Green;
+            else
                 answer.Background = Brushes.Red;
-            }
         }
 
-        // --- Оновлення прогрес-бару ---
-        private void AnswerSelected(object sender, RoutedEventArgs e)
+        private void AnswerSelected(object? sender, RoutedEventArgs e)
         {
             int answered = 0;
             foreach (var rb in FindVisualChildren<RadioButton>(this))
@@ -154,8 +148,7 @@ namespace QuizApp
             ProgressText.Text = $"{answered} / {totalQuestions} питань ({percent:F0}%)";
         }
 
-        // --- Кнопка "Скинути тест" ---
-        private void ResetTest(object sender, RoutedEventArgs e)
+        private void ResetTest(object? sender, RoutedEventArgs e)
         {
             foreach (var rb in FindVisualChildren<RadioButton>(this))
             {
@@ -166,18 +159,65 @@ namespace QuizApp
             ResultText.Text = "";
             ResultText.Visibility = Visibility.Collapsed;
 
-            // Скидання прогресу
             TestProgressBar.Value = 0;
             ProgressText.Text = $"0 / {totalQuestions} питань (0%)";
 
-            // Скидаємо таймер
             stopwatch.Reset();
             TimerText.Text = "Час: 00:00";
             stopwatch.Start();
             timer.Start();
+
+            HideAllExplanations();
         }
 
-        // Пошук усіх RadioButton
+        private void ShowExplanationsForCorrect()
+        {
+            if (Q1_Answer.IsChecked == true) Q1_Explanation.Visibility = Visibility.Visible;
+            if (Q2_Answer.IsChecked == true) Q2_Explanation.Visibility = Visibility.Visible;
+            if (Q3_Answer.IsChecked == true) Q3_Explanation.Visibility = Visibility.Visible;
+            if (Q4_Answer.IsChecked == true) Q4_Explanation.Visibility = Visibility.Visible;
+            if (Q5_Answer.IsChecked == true) Q5_Explanation.Visibility = Visibility.Visible;
+            if (Q6_Answer.IsChecked == true) Q6_Explanation.Visibility = Visibility.Visible;
+            if (Q7_Answer.IsChecked == true) Q7_Explanation.Visibility = Visibility.Visible;
+            if (Q8_Answer.IsChecked == true) Q8_Explanation.Visibility = Visibility.Visible;
+            if (Q9_Answer.IsChecked == true) Q9_Explanation.Visibility = Visibility.Visible;
+            if (Q10_Answer.IsChecked == true) Q10_Explanation.Visibility = Visibility.Visible;
+            if (Q11_Answer.IsChecked == true) Q11_Explanation.Visibility = Visibility.Visible;
+            if (Q12_Answer.IsChecked == true) Q12_Explanation.Visibility = Visibility.Visible;
+            if (Q13_Answer.IsChecked == true) Q13_Explanation.Visibility = Visibility.Visible;
+            if (Q14_Answer.IsChecked == true) Q14_Explanation.Visibility = Visibility.Visible;
+            if (Q15_Answer.IsChecked == true) Q15_Explanation.Visibility = Visibility.Visible;
+            if (Q16_Answer.IsChecked == true) Q16_Explanation.Visibility = Visibility.Visible;
+            if (Q17_Answer.IsChecked == true) Q17_Explanation.Visibility = Visibility.Visible;
+            if (Q18_Answer.IsChecked == true) Q18_Explanation.Visibility = Visibility.Visible;
+            if (Q19_Answer.IsChecked == true) Q19_Explanation.Visibility = Visibility.Visible;
+            if (Q20_Answer.IsChecked == true) Q20_Explanation.Visibility = Visibility.Visible;
+        }
+
+        private void HideAllExplanations()
+        {
+            Q1_Explanation.Visibility = Visibility.Collapsed;
+            Q2_Explanation.Visibility = Visibility.Collapsed;
+            Q3_Explanation.Visibility = Visibility.Collapsed;
+            Q4_Explanation.Visibility = Visibility.Collapsed;
+            Q5_Explanation.Visibility = Visibility.Collapsed;
+            Q6_Explanation.Visibility = Visibility.Collapsed;
+            Q7_Explanation.Visibility = Visibility.Collapsed;
+            Q8_Explanation.Visibility = Visibility.Collapsed;
+            Q9_Explanation.Visibility = Visibility.Collapsed;
+            Q10_Explanation.Visibility = Visibility.Collapsed;
+            Q11_Explanation.Visibility = Visibility.Collapsed;
+            Q12_Explanation.Visibility = Visibility.Collapsed;
+            Q13_Explanation.Visibility = Visibility.Collapsed;
+            Q14_Explanation.Visibility = Visibility.Collapsed;
+            Q15_Explanation.Visibility = Visibility.Collapsed;
+            Q16_Explanation.Visibility = Visibility.Collapsed;
+            Q17_Explanation.Visibility = Visibility.Collapsed;
+            Q18_Explanation.Visibility = Visibility.Collapsed;
+            Q19_Explanation.Visibility = Visibility.Collapsed;
+            Q20_Explanation.Visibility = Visibility.Collapsed;
+        }
+
         private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)
