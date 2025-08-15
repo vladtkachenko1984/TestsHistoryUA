@@ -1,9 +1,9 @@
 ﻿<Window x:Class="QuizApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="TestsHistoryUA" Height="600" Width="500">
+        Title="TestsHistoryUA" Height="600" Width="500" MinWidth="400" MinHeight="500">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="20">
+        <StackPanel Margin="20" Width="Auto">
             <!-- Таймер -->
             <TextBlock x:Name="TimerText" FontSize="14" Margin="0,0,0,10" 
                        HorizontalAlignment="Center" Text="Час: 00:00"/>
@@ -21,190 +21,195 @@
                        Text="0 / 20 питань"/>
 
             <!-- Питання 1 -->
-            <TextBlock Text="1. Назва якого найдавнішого народу на території України збереглась у писемних джерелах?" FontSize="14"/>
+            <TextBlock Text="1. Назва якого найдавнішого народу на території України збереглась у писемних джерелах?" 
+                       FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="Сармати" GroupName="Q1"/>
             <RadioButton Content="Трипільці" GroupName="Q1"/>
             <RadioButton Content="Кіммерійці" GroupName="Q1" x:Name="Q1_Answer"/>
             <RadioButton Content="Скіфи" GroupName="Q1"/>
             <TextBlock x:Name="Q1_Explanation" Text="Про кіммерійців згадується у творчості давньогрецького поета 8 ст до н.е. Гомера" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 2 -->
-            <TextBlock Text="2. На території якого сучасного міста України знаходилась давньогрецька колонія Херсонес?" FontSize="14"/>
+            <TextBlock Text="2. На території якого сучасного міста України знаходилась давньогрецька колонія Херсонес?" 
+                       FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="Одеса" GroupName="Q2"/>
             <RadioButton Content="Маріуполь" GroupName="Q2"/>
             <RadioButton Content="Севастополь" GroupName="Q2" x:Name="Q2_Answer"/>
             <RadioButton Content="Керч" GroupName="Q2"/>
             <TextBlock x:Name="Q2_Explanation" Text="Руїни Херсонеса знайдені на території Севастополя" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 3 -->
-            <TextBlock Text="3. Хто з наведених давньоруських князів найпершим прийняв християнство?" FontSize="14"/>
+            <TextBlock Text="3. Хто з наведених давньоруських князів найпершим прийняв християнство?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="Кий" GroupName="Q3"/>
             <RadioButton Content="Ольга" GroupName="Q3"/>
             <RadioButton Content="Аскольд" GroupName="Q3" x:Name="Q3_Answer"/>
             <RadioButton Content="Володимир Великий" GroupName="Q3"/>
             <TextBlock x:Name="Q3_Explanation" Text="Аскольд прийняв християнство після походу на Візантію" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 4 -->
-            <TextBlock Text="4. У якому році відбулось хрещення Русі?" FontSize="14"/>
+            <TextBlock Text="4. У якому році відбулось хрещення Русі?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="453 р." GroupName="Q4"/>
             <RadioButton Content="988 р." GroupName="Q4" x:Name="Q4_Answer"/>
             <RadioButton Content="1015 р." GroupName="Q4"/>
             <RadioButton Content="1113 р." GroupName="Q4"/>
             <TextBlock x:Name="Q4_Explanation" Text="Дата умовна, але загальноприйнята істориками" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 5 -->
-            <TextBlock Text="5. В якому році татаро-монголи захопили Київ?" FontSize="14"/>
+            <TextBlock Text="5. В якому році татаро-монголи захопили Київ?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="1237 р." GroupName="Q5"/>
             <RadioButton Content="1239 р." GroupName="Q5"/>
             <RadioButton Content="1240 р." GroupName="Q5" x:Name="Q5_Answer"/>
             <RadioButton Content="1242 р." GroupName="Q5"/>
             <TextBlock x:Name="Q5_Explanation" Text="Дата зафіксована у писемних джерелах" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 6 -->
-            <TextBlock Text="6. В яких роках відбулось повстання Богдана Хмельницького?" FontSize="14"/>
+            <TextBlock Text="6. В яких роках відбулось повстання Богдана Хмельницького?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="1591–93 рр." GroupName="Q6"/>
             <RadioButton Content="1594–96 рр." GroupName="Q6"/>
             <RadioButton Content="1637–38 рр." GroupName="Q6"/>
             <RadioButton Content="1648–54 рр." GroupName="Q6" x:Name="Q6_Answer"/>
             <TextBlock x:Name="Q6_Explanation" Text="Дата зафіксована у писемних джерелах" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 7 -->
-            <TextBlock Text="7. У якому році зруйновано Запорізьку Січ?" FontSize="14"/>
+            <TextBlock Text="7. У якому році зруйновано Запорізьку Січ?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="1764 р." GroupName="Q7"/>
             <RadioButton Content="1775 р." GroupName="Q7" x:Name="Q7_Answer"/>
             <RadioButton Content="1781 р." GroupName="Q7"/>
             <RadioButton Content="1783 р." GroupName="Q7"/>
             <TextBlock x:Name="Q7_Explanation" Text="Дата зафіксована у писемних джерелах" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 8 -->
-            <TextBlock Text="8. Хто був автором поеми 'Енеїда'?" FontSize="14"/>
+            <TextBlock Text="8. Хто був автором поеми 'Енеїда'?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="Нестор Шуфрич" GroupName="Q8"/>
             <RadioButton Content="Іван Котляревський" GroupName="Q8" x:Name="Q8_Answer"/>
             <RadioButton Content="Левко Дурко" GroupName="Q8"/>
             <RadioButton Content="Ілля Кива" GroupName="Q8"/>
             <TextBlock x:Name="Q8_Explanation" Text="Котляревський загалом писав Енеїду як розважальний твір" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 9 -->
-            <TextBlock Text="9. У якому році в царській Росії скасували кріпацтво?" FontSize="14"/>
+            <TextBlock Text="9. У якому році в царській Росії скасували кріпацтво?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="1861 р." GroupName="Q9" x:Name="Q9_Answer"/>
             <RadioButton Content="1862 р." GroupName="Q9"/>
             <RadioButton Content="1863 р." GroupName="Q9"/>
             <RadioButton Content="1864 р." GroupName="Q9"/>
             <TextBlock x:Name="Q9_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема в юридичних актах" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 10 -->
-            <TextBlock Text="10. Скільки було прийнято універсалів Центральної Ради?" FontSize="14"/>
+            <TextBlock Text="10. Скільки було прийнято універсалів Центральної Ради?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="2" GroupName="Q10"/>
             <RadioButton Content="3" GroupName="Q10"/>
             <RadioButton Content="4" GroupName="Q10" x:Name="Q10_Answer"/>
             <RadioButton Content="5" GroupName="Q10"/>
             <TextBlock x:Name="Q10_Explanation" Text="Дата зафіксована у писемних джерелах" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 11 -->
-            <TextBlock Text="11. У яких роках був Голодомор в Україні?" FontSize="14"/>
+            <TextBlock Text="11. У яких роках був Голодомор в Україні?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="1932–33 рр." GroupName="Q11" x:Name="Q11_Answer"/>
             <RadioButton Content="1933–34 рр." GroupName="Q11"/>
             <RadioButton Content="1934–35 рр." GroupName="Q11"/>
             <RadioButton Content="1935–36 рр." GroupName="Q11"/>
             <TextBlock x:Name="Q11_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 12 -->
-            <TextBlock Text="12. У яких роках була Радянсько-німецька війна?" FontSize="14"/>
+            <TextBlock Text="12. У яких роках була Радянсько-німецька війна?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="1940–44 рр." GroupName="Q12"/>
             <RadioButton Content="1941–45 рр." GroupName="Q12" x:Name="Q12_Answer"/>
             <RadioButton Content="1942–46 рр." GroupName="Q12"/>
             <RadioButton Content="1943–47 рр." GroupName="Q12"/>
             <TextBlock x:Name="Q12_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях учасників війни" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 13 -->
-            <TextBlock Text="13. Коли Крим був переданий від РРФСР до УРСР?" FontSize="14"/>
+            <TextBlock Text="13. Коли Крим був переданий від РРФСР до УРСР?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="1951 р." GroupName="Q13"/>
             <RadioButton Content="1952 р." GroupName="Q13"/>
             <RadioButton Content="1953 р." GroupName="Q13"/>
             <RadioButton Content="1954 р." GroupName="Q13" x:Name="Q13_Answer"/>
             <TextBlock x:Name="Q13_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у юридичних актах" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
+
             <!-- Питання 14 -->
-            <TextBlock Text="14. Хто був режисером фільму 'Тіні забутих предків'?" FontSize="14"/>
+            <TextBlock Text="14. Хто був режисером фільму 'Тіні забутих предків'?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="Сергій Параджанов" GroupName="Q14" x:Name="Q14_Answer"/>
             <RadioButton Content="Юрій Іллєнко" GroupName="Q14"/>
             <RadioButton Content="Федір Бондарчук" GroupName="Q14"/>
             <RadioButton Content="Кіра Муратова" GroupName="Q14"/>
             <TextBlock x:Name="Q14_Explanation" Text="Неймовірно, але етнічний вірменин дуже захопився українською культурою" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 15 -->
-            <TextBlock Text="15. Аварія на ЧАЕС мала місце у місті:" FontSize="14"/>
+            <TextBlock Text="15. Аварія на ЧАЕС мала місце у місті:" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="Чорнобиль" GroupName="Q15"/>
             <RadioButton Content="Прип'ять" GroupName="Q15" x:Name="Q15_Answer"/>
             <RadioButton Content="Іванків" GroupName="Q15"/>
             <RadioButton Content="Гнідин" GroupName="Q15"/>
             <TextBlock x:Name="Q15_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 16 -->
-            <TextBlock Text="16. Яка дата проголошення незалежності України?" FontSize="14"/>
+            <TextBlock Text="16. Яка дата проголошення незалежності України?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="06.07.1990 р." GroupName="Q16"/>
             <RadioButton Content="24.08.1991 р." GroupName="Q16" x:Name="Q16_Answer"/>
             <RadioButton Content="01.12.1991 р." GroupName="Q16"/>
             <RadioButton Content="25.12.1991 р." GroupName="Q16"/>
             <TextBlock x:Name="Q16_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 17 -->
-            <TextBlock Text="17. Яка назва гімну України?" FontSize="14"/>
+            <TextBlock Text="17. Яка назва гімну України?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="Зродились ми великої години" GroupName="Q17"/>
             <RadioButton Content="Ще не вмерла Україна і слава і воля" GroupName="Q17" x:Name="Q17_Answer"/>
             <RadioButton Content="Повій вітре на Вкраїну" GroupName="Q17"/>
             <RadioButton Content="Їхали козаки" GroupName="Q17"/>
             <TextBlock x:Name="Q17_Explanation" Text="Офіційний варіант назви: Ще не вмерла Україна" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 18 -->
-            <TextBlock Text="18. Яка назва сучасної української валюти?" FontSize="14"/>
+            <TextBlock Text="18. Яка назва сучасної української валюти?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="Гривня" GroupName="Q18" x:Name="Q18_Answer"/>
             <RadioButton Content="Рубль" GroupName="Q18"/>
             <RadioButton Content="Фунт" GroupName="Q18"/>
             <RadioButton Content="Долар" GroupName="Q18"/>
             <TextBlock x:Name="Q18_Explanation" Text="Назва валюти затверджена рішенням парламенту" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 19 -->
-            <TextBlock Text="19. В якому році росіяни окупували Крим?" FontSize="14"/>
+            <TextBlock Text="19. В якому році росіяни окупували Крим?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="2014 р." GroupName="Q19" x:Name="Q19_Answer"/>
             <RadioButton Content="2015 р." GroupName="Q19"/>
             <RadioButton Content="2016 р." GroupName="Q19"/>
             <RadioButton Content="2017 р." GroupName="Q19"/>
             <TextBlock x:Name="Q19_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Питання 20 -->
-            <TextBlock Text="20. В якому році відбулось відкрите вторгнення росіян в Україну?" FontSize="14"/>
+            <TextBlock Text="20. В якому році відбулось відкрите вторгнення росіян в Україну?" FontSize="14" TextWrapping="Wrap"/>
             <RadioButton Content="24.02.2022 р." GroupName="Q20" x:Name="Q20_Answer"/>
             <RadioButton Content="01.03.2022 р." GroupName="Q20"/>
             <RadioButton Content="10.02.2022 р." GroupName="Q20"/>
             <RadioButton Content="01.01.2022 р." GroupName="Q20"/>
             <TextBlock x:Name="Q20_Explanation" Text="Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців" 
-                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed"/>
+                       FontStyle="Italic" Foreground="Gray" Visibility="Collapsed" TextWrapping="Wrap"/>
 
             <!-- Кнопки завершення та скидання -->
-            <Button Content="Завершити тест" HorizontalAlignment="Center" Margin="10" Padding="10" VerticalAlignment="Bottom" Click="FinishTest"/>
-            <Button Content="Скинути тест" HorizontalAlignment="Center" Margin="10" Padding="10" VerticalAlignment="Bottom" Click="ResetTest"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Content="Завершити тест" Margin="5" Padding="10" Click="FinishTest"/>
+                <Button Content="Скинути тест" Margin="5" Padding="10" Click="ResetTest"/>
+            </StackPanel>
 
             <!-- Результати -->
-            <TextBlock x:Name="ResultText" FontSize="16" Margin="10" Visibility="Collapsed" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="ResultText" FontSize="16" Margin="10" Visibility="Collapsed" TextWrapping="Wrap" HorizontalAlignment="Center"/>
         </StackPanel>
     </ScrollViewer>
 </Window>

@@ -35,7 +35,7 @@ namespace QuizApp
                 rb.Checked += AnswerSelected;
             }
 
-            // Заповнюємо словники правильних відповідей та пояснень
+            // Правильні відповіді
             correctAnswers[1] = Q1_Answer;
             correctAnswers[2] = Q2_Answer;
             correctAnswers[3] = Q3_Answer;
@@ -57,6 +57,7 @@ namespace QuizApp
             correctAnswers[19] = Q19_Answer;
             correctAnswers[20] = Q20_Answer;
 
+            // Пояснення
             explanations[1] = Q1_Explanation;
             explanations[2] = Q2_Explanation;
             explanations[3] = Q3_Explanation;
@@ -110,11 +111,8 @@ namespace QuizApp
             ResultText.Visibility = Visibility.Visible;
 
             HighlightAnswers();
-            ShowExplanationsForCorrect();
-
-            string filePath = "history.txt";
-            string record = $"{DateTime.Now:dd.MM.yyyy HH:mm} — {correctCount}/{totalQuestions} ({percent:F0}%), Час: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
-            File.AppendAllText(filePath, record + Environment.NewLine);
+            ShowExplanationsForAll();
+            SaveResultToFile(correctCount, percent);
         }
 
         private void HighlightAnswers()
@@ -122,16 +120,18 @@ namespace QuizApp
             foreach (var kvp in correctAnswers)
             {
                 var answer = kvp.Value;
-                answer.Background = answer.IsChecked == true ? Brushes.Green : Brushes.Red;
+                if (answer.IsChecked == true)
+                    answer.Background = Brushes.Green;
+                else
+                    answer.Background = Brushes.Red;
             }
         }
 
-        private void ShowExplanationsForCorrect()
+        private void ShowExplanationsForAll()
         {
             foreach (var kvp in correctAnswers)
             {
-                if (kvp.Value.IsChecked == true)
-                    explanations[kvp.Key].Visibility = Visibility.Visible;
+                explanations[kvp.Key].Visibility = Visibility.Visible;
             }
         }
 
@@ -187,6 +187,13 @@ namespace QuizApp
             timer.Start();
 
             HideAllExplanations();
+        }
+
+        private void SaveResultToFile(int correctCount, double percent)
+        {
+            string filePath = "history.txt";
+            string record = $"{DateTime.Now:dd.MM.yyyy HH:mm} — {correctCount}/{totalQuestions} ({percent:F0}%), Час: {stopwatch.Elapsed.Minutes:D2}:{stopwatch.Elapsed.Seconds:D2}";
+            File.AppendAllText(filePath, record + Environment.NewLine);
         }
 
         private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
