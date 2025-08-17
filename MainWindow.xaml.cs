@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Windows.Threading;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace QuizApp
 {
@@ -91,15 +92,36 @@ namespace QuizApp
 
         private void FinishTest(object? sender, RoutedEventArgs e)
         {
+            // --- Перевірка на незаповнені питання за GroupName ---
+            List<int> unansweredQuestions = new List<int>();
+
+            foreach (var kvp in correctAnswers)
+            {
+                string groupName = kvp.Value.GroupName;
+                bool anyChecked = FindVisualChildren<RadioButton>(this)
+                                 .Any(rb => rb.GroupName == groupName && rb.IsChecked == true);
+
+                if (!anyChecked)
+                    unansweredQuestions.Add(kvp.Key);
+            }
+
+            if (unansweredQuestions.Count > 0)
+            {
+                string msg = $"Ви не відповіли на {unansweredQuestions.Count} з {totalQuestions} питань.\n" +
+                             $"Номери пропущених: {string.Join(", ", unansweredQuestions)}\n\n" +
+                             "Бажаєте завершити тест?";
+                var result = MessageBox.Show(msg, "Попередження",
+                    MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.No)
+                    return; // ❌ користувач передумав
+            }
+
+            // --- Основна логіка завершення ---
             stopwatch.Stop();
             timer.Stop();
 
-            int correctCount = 0;
-            foreach (var kvp in correctAnswers)
-            {
-                if (kvp.Value.IsChecked == true)
-                    correctCount++;
-            }
+            int correctCount = correctAnswers.Count(kvp => kvp.Value.IsChecked == true);
 
             double percent = (double)correctCount / totalQuestions * 100;
 
@@ -120,10 +142,7 @@ namespace QuizApp
             foreach (var kvp in correctAnswers)
             {
                 var answer = kvp.Value;
-                if (answer.IsChecked == true)
-                    answer.Background = Brushes.Green;
-                else
-                    answer.Background = Brushes.Red;
+                answer.Background = answer.IsChecked == true ? Brushes.Green : Brushes.Red;
             }
         }
 
@@ -143,24 +162,13 @@ namespace QuizApp
 
         private void AnswerSelected(object? sender, RoutedEventArgs e)
         {
-            int answered = 0;
-            foreach (var rb in FindVisualChildren<RadioButton>(this))
+            // Оновлення прогресу тесту на основі GroupName
+            int answered = correctAnswers.Keys.Count(q =>
             {
-                var parentPanel = rb.Parent as Panel;
-                if (parentPanel != null)
-                {
-                    bool anyChecked = false;
-                    foreach (var child in parentPanel.Children)
-                    {
-                        if (child is RadioButton r && r.IsChecked == true)
-                        {
-                            anyChecked = true;
-                            break;
-                        }
-                    }
-                    if (anyChecked) answered++;
-                }
-            }
+                string groupName = correctAnswers[q].GroupName;
+                return FindVisualChildren<RadioButton>(this)
+                       .Any(rb => rb.GroupName == groupName && rb.IsChecked == true);
+            });
 
             double percent = (double)answered / totalQuestions * 100;
             TestProgressBar.Value = answered;
