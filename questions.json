@@ -1,0 +1,225 @@
+{
+    "questions": [
+      {
+        "id": 1,
+        "question": "Назва якого найдавнішого народу на території України збереглась у писемних джерелах?",
+        "options": [
+          { "text": "Сармати", "isCorrect": false },
+          { "text": "Трипільці", "isCorrect": false },
+          { "text": "Кіммерійці", "isCorrect": true },
+          { "text": "Скіфи", "isCorrect": false }
+        ],
+        "explanation": "Про кіммерійців згадується у творчості давньогрецького поета 8 ст до н.е. Гомера"
+      },
+      {
+        "id": 2,
+        "question": "На території якого сучасного міста України знаходилась давньогрецька колонія Херсонес?",
+        "options": [
+          { "text": "Одеса", "isCorrect": false },
+          { "text": "Маріуполь", "isCorrect": false },
+          { "text": "Севастополь", "isCorrect": true },
+          { "text": "Керч", "isCorrect": false }
+        ],
+        "explanation": "Руїни Херсонеса знайдені на території Севастополя"
+      },
+      {
+        "id": 3,
+        "question": "Хто з наведених давньоруських князів найпершим прийняв християнство?",
+        "options": [
+          { "text": "Кий", "isCorrect": false },
+          { "text": "Ольга", "isCorrect": false },
+          { "text": "Аскольд", "isCorrect": true },
+          { "text": "Володимир Великий", "isCorrect": false }
+        ],
+        "explanation": "Аскольд прийняв християнство після походу на Візантію"
+      },
+      {
+        "id": 4,
+        "question": "У якому році відбулось хрещення Русі?",
+        "options": [
+          { "text": "453 р.", "isCorrect": false },
+          { "text": "988 р.", "isCorrect": true },
+          { "text": "1015 р.", "isCorrect": false },
+          { "text": "1113 р.", "isCorrect": false }
+        ],
+        "explanation": "Дата умовна, але загальноприйнята істориками"
+      },
+      {
+        "id": 5,
+        "question": "В якому році татаро-монголи захопили Київ?",
+        "options": [
+          { "text": "1237 р.", "isCorrect": false },
+          { "text": "1239 р.", "isCorrect": false },
+          { "text": "1240 р.", "isCorrect": true },
+          { "text": "1242 р.", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах"
+      },
+      {
+        "id": 6,
+        "question": "В яких роках відбулось повстання Богдана Хмельницького?",
+        "options": [
+          { "text": "1591–93 рр.", "isCorrect": false },
+          { "text": "1594–96 рр.", "isCorrect": false },
+          { "text": "1637–38 рр.", "isCorrect": false },
+          { "text": "1648–54 рр.", "isCorrect": true }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах"
+      },
+      {
+        "id": 7,
+        "question": "У якому році зруйновано Запорізьку Січ?",
+        "options": [
+          { "text": "1764 р.", "isCorrect": false },
+          { "text": "1775 р.", "isCorrect": true },
+          { "text": "1781 р.", "isCorrect": false },
+          { "text": "1783 р.", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах"
+      },
+      {
+        "id": 8,
+        "question": "Хто був автором поеми 'Енеїда'?",
+        "options": [
+          { "text": "Нестор Шуфрич", "isCorrect": false },
+          { "text": "Іван Котляревський", "isCorrect": true },
+          { "text": "Левко Дурко", "isCorrect": false },
+          { "text": "Ілля Кива", "isCorrect": false }
+        ],
+        "explanation": "Котляревський загалом писав Енеїду як розважальний твір"
+      },
+      {
+        "id": 9,
+        "question": "У якому році в царській Росії скасували кріпацтво?",
+        "options": [
+          { "text": "1861 р.", "isCorrect": true },
+          { "text": "1862 р.", "isCorrect": false },
+          { "text": "1863 р.", "isCorrect": false },
+          { "text": "1864 р.", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах, зокрема в юридичних актах"
+      },
+      {
+        "id": 10,
+        "question": "Скільки було прийнято універсалів Центральної Ради?",
+        "options": [
+          { "text": "2", "isCorrect": false },
+          { "text": "3", "isCorrect": false },
+          { "text": "4", "isCorrect": true },
+          { "text": "5", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах"
+      },
+      {
+        "id": 11,
+        "question": "У яких роках був Голодомор в Україні?",
+        "options": [
+          { "text": "1932–33 рр.", "isCorrect": true },
+          { "text": "1933–34 рр.", "isCorrect": false },
+          { "text": "1934–35 рр.", "isCorrect": false },
+          { "text": "1935–36 рр.", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців"
+      },
+      {
+        "id": 12,
+        "question": "У яких роках була Радянсько-німецька війна?",
+        "options": [
+          { "text": "1940–44 рр.", "isCorrect": false },
+          { "text": "1941–45 рр.", "isCorrect": true },
+          { "text": "1942–46 рр.", "isCorrect": false },
+          { "text": "1943–47 рр.", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах, зокрема у свідченнях учасників війни"
+      },
+      {
+        "id": 13,
+        "question": "Коли Крим був переданий від РРФСР до УРСР?",
+        "options": [
+          { "text": "1951 р.", "isCorrect": false },
+          { "text": "1952 р.", "isCorrect": false },
+          { "text": "1953 р.", "isCorrect": false },
+          { "text": "1954 р.", "isCorrect": true }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах, зокрема у юридичних актах"
+      },
+      {
+        "id": 14,
+        "question": "Хто був режисером фільму 'Тіні забутих предків'?",
+        "options": [
+          { "text": "Сергій Параджанов", "isCorrect": true },
+          { "text": "Юрій Іллєнко", "isCorrect": false },
+          { "text": "Федір Бондарчук", "isCorrect": false },
+          { "text": "Кіра Муратова", "isCorrect": false }
+        ],
+        "explanation": "Неймовірно, але етнічний вірменин дуже захопився українською культурою"
+      },
+      {
+        "id": 15,
+        "question": "Аварія на ЧАЕС мала місце у місті:",
+        "options": [
+          { "text": "Чорнобиль", "isCorrect": false },
+          { "text": "Прип'ять", "isCorrect": true },
+          { "text": "Іванків", "isCorrect": false },
+          { "text": "Гнідин", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців"
+      },
+      {
+        "id": 16,
+        "question": "Яка дата проголошення незалежності України?",
+        "options": [
+          { "text": "06.07.1990 р.", "isCorrect": false },
+          { "text": "24.08.1991 р.", "isCorrect": true },
+          { "text": "01.12.1991 р.", "isCorrect": false },
+          { "text": "25.12.1991 р.", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців"
+      },
+      {
+        "id": 17,
+        "question": "Яка назва гімну України?",
+        "options": [
+          { "text": "Зродились ми великої години", "isCorrect": false },
+          { "text": "Ще не вмерла Україна і слава і воля", "isCorrect": true },
+          { "text": "Повій вітре на Вкраїну", "isCorrect": false },
+          { "text": "Їхали козаки", "isCorrect": false }
+        ],
+        "explanation": "Офіційний варіант назви: Ще не вмерла Україна"
+      },
+      {
+        "id": 18,
+        "question": "Яка назва сучасної української валюти?",
+        "options": [
+          { "text": "Гривня", "isCorrect": true },
+          { "text": "Рубль", "isCorrect": false },
+          { "text": "Фунт", "isCorrect": false },
+          { "text": "Долар", "isCorrect": false }
+        ],
+        "explanation": "Назва валюти затверджена рішенням парламенту"
+      },
+      {
+        "id": 19,
+        "question": "В якому році росіяни окупували Крим?",
+        "options": [
+          { "text": "2014 р.", "isCorrect": true },
+          { "text": "2015 р.", "isCorrect": false },
+          { "text": "2016 р.", "isCorrect": false },
+          { "text": "2017 р.", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців"
+      },
+      {
+        "id": 20,
+        "question": "В якому році відбулось відкрите вторгнення росіян в Україну?",
+        "options": [
+          { "text": "24.02.2022 р.", "isCorrect": true },
+          { "text": "01.03.2022 р.", "isCorrect": false },
+          { "text": "10.02.2022 р.", "isCorrect": false },
+          { "text": "01.01.2022 р.", "isCorrect": false }
+        ],
+        "explanation": "Дата зафіксована у писемних джерелах, зокрема у свідченнях очевидців"
+      }
+    ]
+  }
+  
