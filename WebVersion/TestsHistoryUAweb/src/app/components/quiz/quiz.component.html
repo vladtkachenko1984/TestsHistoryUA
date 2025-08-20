@@ -1,0 +1,33 @@
+<div *ngIf="questions.length > 0">
+  <form (ngSubmit)="submitQuiz()">
+    <div *ngFor="let q of questions" style="margin-bottom: 20px;">
+      <h3>{{ q.id }}. {{ q.question }}</h3>
+
+      <div *ngFor="let opt of q.options">
+        <label>
+          <input type="radio"
+                 [name]="'question-' + q.id"
+                 [value]="opt.text"
+                 [(ngModel)]="selectedAnswers[q.id]"
+                 required>
+          {{ opt.text }}
+          <span *ngIf="showResults" >
+              <span *ngIf="opt.isCorrect">✅</span>
+          </span>
+        </label>
+      </div>
+
+      <!-- Show results & explanations after submit -->
+      <div *ngIf="showResults" style="margin-top: 10px;">
+        <p><strong>Explanation:</strong> {{ q.explanation }}</p>
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Show score after submission -->
+  <div *ngIf="showResults" style="margin-top: 20px;">
+    <h2>Score: {{ getScore() }}/{{ questions.length }}</h2>
+  </div>
+</div>
