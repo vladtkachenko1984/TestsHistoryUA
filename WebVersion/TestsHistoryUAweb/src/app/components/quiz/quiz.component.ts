@@ -8,28 +8,52 @@ import { Question, Quiz } from '../../models/question.model';
   selector: 'app-quiz',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './quiz.component.html',
+  templateUrl: './quiz.component.html'
 })
 export class QuizComponent implements OnInit {
   questions: Question[] = [];
-  selectedAnswers: { [id: number]: string } = {};
+  currentIndex = 0;
+  selectedAnswers: { [key: number]: string } = {};
   showResults = false;
 
   constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
-    this.quizService.loadQuestions().subscribe(data => {
-      this.questions = data.questions;
+    this.quizService.loadQuestions().subscribe((quiz: Quiz) => {
+      this.questions = quiz.questions;
     });
   }
 
-  submitQuiz() {
+  get currentQuestion(): Question {
+    return this.questions[this.currentIndex];
+  }
+
+  nextQuestion(): void {
+    if (this.currentIndex < this.questions.length - 1) {
+      this.currentIndex++;
+    }
+  }
+
+  previousQuestion(): void {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    }
+  }
+
+  submitQuiz(): void {
     this.showResults = true;
+    console.log('Submitted answers:', this.selectedAnswers);
   }
 
   getScore(): number {
-    return this.questions.filter(q =>
-      q.options.find(opt => opt.isCorrect)?.text === this.selectedAnswers[q.id]
-    ).length;
+    let score = 0;
+    for (let q of this.questions) {
+      const answer = this.selectedAnswers[q.id];
+      const correct = q.options.find(o => o.isCorrect)?.text;
+      if (answer === correct) {
+        score++;
+      }
+    }
+    return score;
   }
 }

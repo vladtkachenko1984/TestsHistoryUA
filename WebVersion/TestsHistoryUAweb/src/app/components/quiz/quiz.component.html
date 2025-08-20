@@ -1,32 +1,53 @@
 <div *ngIf="questions.length > 0">
   <form (ngSubmit)="submitQuiz()">
-    <div *ngFor="let q of questions" style="margin-bottom: 20px;">
-      <h3>{{ q.id }}. {{ q.question }}</h3>
 
-      <div *ngFor="let opt of q.options">
+    <!-- Before submit: show only one question -->
+    <div *ngIf="!showResults">
+      <h3>{{ currentQuestion.id }}. {{ currentQuestion.question }}</h3>
+
+      <div *ngFor="let opt of currentQuestion.options">
         <label>
           <input type="radio"
-                 [name]="'question-' + q.id"
+                 [name]="'question-' + currentQuestion.id"
                  [value]="opt.text"
-                 [(ngModel)]="selectedAnswers[q.id]"
+                 [(ngModel)]="selectedAnswers[currentQuestion.id]"
                  required>
           {{ opt.text }}
-          <span *ngIf="showResults" >
-              <span *ngIf="opt.isCorrect">✅</span>
-          </span>
         </label>
       </div>
+    </div>
 
-      <!-- Show results & explanations after submit -->
-      <div *ngIf="showResults" style="margin-top: 10px;">
+    <!-- After submit: show all questions -->
+    <div *ngIf="showResults">
+      <div *ngFor="let q of questions" style="margin-bottom: 20px;">
+        <h3>{{ q.id }}. {{ q.question }}</h3>
+
+        <div *ngFor="let opt of q.options">
+          <label>
+            <input type="radio"
+                   [name]="'question-' + q.id"
+                   [value]="opt.text"
+                   [(ngModel)]="selectedAnswers[q.id]"
+                   disabled>
+            {{ opt.text }}
+            <span *ngIf="opt.isCorrect">✅</span>
+            <span *ngIf="selectedAnswers[q.id] === opt.text && !opt.isCorrect">❌</span>
+          </label>
+        </div>
+
         <p><strong>Explanation:</strong> {{ q.explanation }}</p>
       </div>
     </div>
 
-    <button type="submit">Submit</button>
+    <!-- Navigation & Submit buttons (only before submission) -->
+    <div *ngIf="!showResults" style="margin-top: 20px;">
+      <button type="button" (click)="previousQuestion()" [disabled]="currentIndex === 0">Previous</button>
+      <button type="button" (click)="nextQuestion()" [disabled]="currentIndex === questions.length - 1">Next</button>
+      <button type="submit">Submit</button>
+    </div>
   </form>
 
-  <!-- Show score after submission -->
+  <!-- Score after submission -->
   <div *ngIf="showResults" style="margin-top: 20px;">
     <h2>Score: {{ getScore() }}/{{ questions.length }}</h2>
   </div>
